@@ -3,6 +3,7 @@ const path = require('path');
 const resolve = dir => path.join(__dirname, '/', dir);
 
 module.exports = {
+  publicPath: '/vue2-cli3-typescript/',
   configureWebpack: {
     devServer: {
       host: '127.0.0.1',

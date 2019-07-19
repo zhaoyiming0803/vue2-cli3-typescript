@@ -1,22 +1,26 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from './views/Home.vue';
+import Home from './pages/Home.vue';
 
 Vue.use(Router);
 
 export default new Router({
   mode: 'history',
-  base: process.env.BASE_URL,
+  base: 'project',
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      redirect: '/home',
+    },
+    {
+      path: '/home',
+      name: 'Home',
+      component: () => import('./pages/Home.vue'),
     },
     {
       path: '/about',
-      name: 'about',
-      component: () => import('./views/About.vue'),
+      name: 'About',
+      component: () => import('./pages/About.vue'),
     },
   ],
 });

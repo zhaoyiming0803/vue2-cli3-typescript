@@ -1,18 +1,33 @@
 <template>
-  <div class="home">
+  <div class="home" v-if="isShowPage">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <Hello msg="Hello"/>
+    <World msg="World"></World>
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+<script scoped lang="ts">
+  import { Component, Vue } from 'vue-property-decorator';
+  import Hello from '@/components/Hello.vue';
+  import World from '@/components/World.vue';
 
-@Component({
-  components: {
-    HelloWorld,
-  },
-})
-export default class Home extends Vue {}
+  @Component({
+    components: {
+      Hello,
+      World,
+    },
+  })
+  export default class Home extends Vue {
+    private isShowPage: boolean = true;
+
+    private created() {
+      this.showPage();
+    }
+
+    private showPage() {
+      setTimeout(() => {
+        this.isShowPage = true;
+      }, 2000);
+    }
+  }
 </script>

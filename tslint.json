@@ -18,6 +18,8 @@
     "no-console": false,
     "no-null-keyword": false,
     "trailing-comma": [false],
-    "member-ordering": false
+    "member-ordering": false,
+    "member-access": false,
+    "space-before-function-paren": false
   }
 }

@@ -20,13 +20,12 @@
 
     private isShowModal: boolean = false;
 
-    private showModal() {
+    private showModal () {
       this.isShowModal = true;
     }
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
   h3 {
     margin: 40px 0 0;

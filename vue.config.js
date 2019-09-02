@@ -1,24 +1,31 @@
-const fs = require('fs');
-const path = require('path');
-const resolve = dir => path.join(__dirname, '/', dir);
+const merge = require('webpack-merge');
+const tsImportPluginFactory = require('ts-import-plugin');
 
 module.exports = {
-  publicPath: '/vue2-cli3-typescript/',
-  configureWebpack: {
-    devServer: {
-      host: '127.0.0.1',
-      hot: false,
-      inline: false,
-      progress: true,
-      contentBase: resolve('./'),
-      compress: true,
-      disableHostCheck: true,
-      historyApiFallback: true
-    },
-    resolve: {
-      alias: {
-        static: resolve('./static')
-      }
-    }
+  parallel: false,
+  outputDir: 'dist',
+  publicPath: process.env.NODE_ENV === 'production' ? '/vue-cli3-typescript/' : '/',
+  chainWebpack: config => {
+    config.module
+      .rule('ts')
+      .use('ts-loader')
+      .tap(options => {
+        options = merge(options, {
+          transpileOnly: true,
+          getCustomTransformers: () => ({
+            before: [
+              tsImportPluginFactory({
+                libraryName: 'vant',
+                libraryDirectory: 'es',
+                style: true
+              })
+            ]
+          }),
+          compilerOptions: {
+            module: 'es2015'
+          }
+        });
+        return options;
+      });
   }
-}
+};

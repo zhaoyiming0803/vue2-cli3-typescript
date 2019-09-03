@@ -2,9 +2,11 @@
 
 - npm install
 
-- npm run serve
+- npm run dev 启动本地开发环境
 
-- npm run build
+- npm run server 启动后端 node 服务
+
+- npm run build 打包
 
 ### 参考
 

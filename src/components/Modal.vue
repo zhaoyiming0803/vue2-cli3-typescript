@@ -6,7 +6,7 @@
 </template>
 
 <script scoped lang="ts">
-  import { Component, Prop, Vue, Watch, Inject } from 'vue-property-decorator';
+  import { Component, Prop, Vue, Watch, Inject, Emit } from 'vue-property-decorator';
 
   @Component
   export default class Modal extends Vue {
@@ -21,9 +21,12 @@
       this.currentValue = n;
     }
 
+    @Emit('input')
     @Watch('currentValue')
     private onCurrentValueChange(n: boolean, o: boolean) {
-      this.$emit('input', n);
+      // this.$emit('input', n);
+      console.log('cursomer modal value: ', n);
+      return n;
     }
 
     private close() {

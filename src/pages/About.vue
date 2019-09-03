@@ -69,7 +69,7 @@
     }
 
     private getMenuList () {
-      this.$store.dispatch('getMenuList');
+      this.$store.dispatch('getMenuList', '1234');
     }
   }
 </script>

@@ -33,8 +33,8 @@ export default {
   },
 
   actions: {
-    getMenuList ({ commit }: ActionsType) {
-      getMenuListReq('123')
+    getMenuList ({ commit }: ActionsType, token: string) {
+      getMenuListReq(token)
         .then(res => {
           console.log('getMenuList then: ', res);
           commit('setMenuList', res.data);

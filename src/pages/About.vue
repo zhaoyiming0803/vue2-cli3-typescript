@@ -5,6 +5,8 @@
       <van-button type="primary" @click="openModal">打开Modal</van-button>
       <modal v-model="isShowModal"></modal>
       <van-button type="info" @click="onSuccess">成功提示</van-button>
+      <van-button type="info" @click="resetVersion">重置Version</van-button>
+      <van-button type="info" @click="getMenuList">获取菜单列表</van-button>
     </template>
     <template v-else>
       <van-skeleton title avatar :row="3"></van-skeleton>
@@ -37,7 +39,8 @@
     @Provide() foo = 'foo-about';
 
     private created () {
-      console.log(this.$route);
+      console.log('$route: ', this.$route);
+      console.log('state: ', this.$store.state);
     }
 
     private mounted () {
@@ -59,6 +62,14 @@
 
     private onSuccess () {
       this.$toast.success('成功提示');
+    }
+
+    private resetVersion () {
+      this.$store.commit('setVersion', 'v0.0.2');
+    }
+
+    private getMenuList () {
+      this.$store.dispatch('getMenuList');
     }
   }
 </script>

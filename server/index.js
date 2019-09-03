@@ -20,5 +20,31 @@ app.get('/api/user/info', (req, res) => {
   });
 });
 
+app.get('/api/memu/list', (req, res) => {
+  res.json({
+    code: 0,
+    data: [
+      { 
+        id: 1, 
+        name: '权限管理', 
+        children: [
+          { id: 2, name: '菜单管理' },
+          { id: 3, name: '角色管理' },
+          { id: 4, name: '用户管理' }
+        ] 
+      },
+      { 
+        id: 5, 
+        name: '本地生活', 
+        children: [
+          { id: 6, name: '商品管理' },
+          { id: 7, name: '商家管理' }
+        ] 
+      }
+    ],
+    msg: ''
+  });
+});
+
 console.log('app listen 8091');
 app.listen(8091);
